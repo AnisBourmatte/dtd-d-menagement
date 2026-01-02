@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 30% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 30% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 30% 20%;
+    --primary: 358 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 30% 30%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 15% 50%;
+    --accent: 358 65% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 358 65% 48%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 30% 20%;
+    --foreground: 0 0% 98%;
+    --card: 215 30% 25%;
+    --card-foreground: 0 0% 98%;
+    --popover: 215 30% 25%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 358 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 20% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 25% 30%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 358 65% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 30%;
+    --input: 215 25% 30%;
+    --ring: 358 65% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+/* Custom color utilities */
+.text-dtd-red {
+  color: #c92b30;
+}
+
+.bg-dtd-red {
+  background-color: #c92b30;
+}
+
+.text-dtd-navy {
+  color: #1e3a5f;
+}
+
+.bg-dtd-navy {
+  background-color: #1e3a5f;
+}
+
+.border-dtd-red {
+  border-color: #c92b30;
+}
+
+/* Animation for smooth transitions */
+.transition-all-smooth {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hero background overlay */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(30, 58, 95, 0.7) 100%);
+}
+
+/* Accordion custom styles */
+.faq-accordion [data-state="open"] {
+  background-color: #c92b30;
+  color: white;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Step number gradient */
+.step-number {
+  background: linear-gradient(135deg, #c92b30 0%, #a32428 100%);
+}
+
+/* Testimonial card colors */
+.testimonial-red {
+  background-color: #c92b30;
+}
