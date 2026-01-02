@@ -11,7 +11,7 @@ export default function ProfessionnelPage() {
             imagePosition="left"
             kicker="TRANSFERT D'ENTREPRISE"
             title="Déménagement de Bureaux"
-            image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=1200&fit=crop"
+            image="/images/demenagement-professionnel.png"
             description={
                 <>
                     <p>

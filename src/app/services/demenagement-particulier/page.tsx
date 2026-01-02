@@ -11,7 +11,7 @@ export default function ParticulierPage() {
             imagePosition="right"
             kicker="SÉRÉNITÉ GARANTIE"
             title="Déménagement Résidentiel"
-            image="https://images.unsplash.com/photo-1603792907191-89e55f2b005f?w=1200&h=1200&fit=crop"
+            image="/images/demenagement-particulier.png"
             description={
                 <>
                     <p>

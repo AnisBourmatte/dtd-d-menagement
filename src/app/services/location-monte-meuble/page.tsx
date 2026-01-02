@@ -11,7 +11,7 @@ export default function MonteMeublePage() {
             imagePosition="left"
             kicker="ACCÈS DIFFICILES ?"
             title="Location de Monte-Charge 94"
-            image="https://images.unsplash.com/photo-1605518216965-7bc81f4b9b70?w=1200&h=1200&fit=crop"
+            image="/images/monte-meuble.png"
             description={
                 <>
                     <p>

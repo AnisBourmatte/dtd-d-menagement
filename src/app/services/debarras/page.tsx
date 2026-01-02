@@ -11,7 +11,7 @@ export default function DebarrasPage() {
             imagePosition="right"
             kicker="NETTOYAGE COMPLET"
             title="Service de Débarras"
-            image="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=1200&h=1200&fit=crop"
+            image="/images/debarras.png"
             description={
                 <>
                     <p>
