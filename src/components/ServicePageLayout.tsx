@@ -38,7 +38,7 @@ export default function ServicePageLayout({
                     >
                         <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                            style={{ backgroundImage: `url(${image})` }}
+                            style={{ backgroundImage: `url(${process.env.NODE_ENV === 'production' && image.startsWith('/') ? '/dtd-d-menagement' + image : image})` }}
                         />
                         {/* Overlay just in case image is too bright, but keeping it subtle */}
                         <div className="absolute inset-0 bg-black/10" />
