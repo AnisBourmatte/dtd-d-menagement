@@ -2,18 +2,25 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const pathname = usePathname();
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    // If we are on the homepage, we want smooth scroll
+    if (pathname === "/") {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    // If we are NOT on homepage, let the Link behavior happen (navigate to /#targetId)
+
     setMobileMenuOpen(false);
   };
 
@@ -30,14 +37,14 @@ export default function Header() {
               01 43 39 46 67
             </a>
           </div>
-          <a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, 'contact')}
+          <Link
+            href="/#contact"
+            onClick={(e) => handleNavigation(e, 'contact')}
             className="group relative inline-flex items-center gap-2 text-sm font-bold px-5 py-2 bg-dtd-red text-white rounded-full overflow-hidden transition-all duration-300 hover:bg-white hover:text-dtd-red hover:shadow-lg hover:shadow-dtd-red/30"
           >
             <span className="relative z-10">Demandez votre devis</span>
             <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -58,34 +65,38 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             <li>
-              <a
-                href="#accueil"
-                onClick={(e) => scrollToSection(e, 'accueil')}
-                className="relative font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-red transition-all duration-300 after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[3px] after:bg-dtd-red after:rounded-full"
+              <Link
+                href="/#accueil"
+                onClick={(e) => handleNavigation(e, 'accueil')}
+                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Accueil
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#presentation"
-                onClick={(e) => scrollToSection(e, 'presentation')}
-                className="relative font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-all duration-300 after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[3px] after:bg-dtd-red after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+              <Link
+                href="/#presentation"
+                onClick={(e) => handleNavigation(e, 'presentation')}
+                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Présentation
-              </a>
+              </Link>
             </li>
             <li className="relative group">
               <button
-                className="flex items-center gap-1.5 font-bold text-sm uppercase tracking-wider text-dtd-navy hover:text-dtd-red transition-all duration-300"
+                className="flex items-center gap-1.5 font-bold text-sm uppercase tracking-wider text-dtd-navy hover:text-dtd-red transition-colors duration-300 group-hover:text-dtd-red"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
                 onClick={() => {
-                  const element = document.getElementById('services');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  if (pathname === "/") {
+                    const element = document.getElementById('services');
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = '/#services';
+                  }
                 }}
               >
                 Nos Services
@@ -98,63 +109,59 @@ export default function Header() {
               >
                 <ul className="bg-white shadow-xl rounded-xl py-3 min-w-[250px] border border-gray-100">
                   <li>
-                    <a
-                      href="#services"
-                      onClick={(e) => scrollToSection(e, 'services')}
+                    <Link
+                      href="/services/location-monte-meuble"
                       className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
                     >
                       Location de monte-meuble
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#services"
-                      onClick={(e) => scrollToSection(e, 'services')}
+                    <Link
+                      href="/services/demenagement-particulier"
                       className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
                     >
                       Déménagement pour particuliers
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#services"
-                      onClick={(e) => scrollToSection(e, 'services')}
+                    <Link
+                      href="/services/demenagement-professionnel"
                       className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
                     >
                       Déménagement pour professionnels
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#services"
-                      onClick={(e) => scrollToSection(e, 'services')}
+                    <Link
+                      href="/services/debarras"
                       className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
                     >
                       Débarras de grenier
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
             </li>
             <li>
-              <a
-                href="#galerie"
-                onClick={(e) => scrollToSection(e, 'galerie')}
-                className="relative font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-all duration-300 after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[3px] after:bg-dtd-red after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+              <Link
+                href="/#galerie"
+                onClick={(e) => handleNavigation(e, 'galerie')}
+                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Galerie Photo
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, 'contact')}
-                className="relative font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-all duration-300 after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[3px] after:bg-dtd-red after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+              <Link
+                href="/#contact"
+                onClick={(e) => handleNavigation(e, 'contact')}
+                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -172,28 +179,28 @@ export default function Header() {
           <div className="md:hidden bg-white border-t border-gray-100 py-4">
             <ul className="container mx-auto px-4 space-y-3">
               <li>
-                <a
-                  href="#accueil"
-                  onClick={(e) => scrollToSection(e, 'accueil')}
-                  className="block text-dtd-red font-bold text-sm uppercase cursor-pointer py-2"
+                <Link
+                  href="/#accueil"
+                  onClick={(e) => handleNavigation(e, 'accueil')}
+                  className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   Accueil
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#presentation"
-                  onClick={(e) => scrollToSection(e, 'presentation')}
+                <Link
+                  href="/#presentation"
+                  onClick={(e) => handleNavigation(e, 'presentation')}
                   className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   Présentation
-                </a>
+                </Link>
               </li>
               <li>
                 <button
-                  className="flex items-center gap-1 text-dtd-navy font-bold text-sm uppercase w-full py-2"
+                  className="flex items-center gap-1 text-dtd-navy font-bold text-sm uppercase w-full py-2 hover:text-dtd-red transition-colors"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                   onClick={() => setServicesOpen(!servicesOpen)}
                 >
@@ -203,63 +210,63 @@ export default function Header() {
                 {servicesOpen && (
                   <ul className="ml-4 mt-2 space-y-2 border-l-2 border-dtd-red pl-4">
                     <li>
-                      <a
-                        href="#services"
-                        onClick={(e) => scrollToSection(e, 'services')}
+                      <Link
+                        href="/services/location-monte-meuble"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                       >
                         Location de monte-meuble
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#services"
-                        onClick={(e) => scrollToSection(e, 'services')}
+                      <Link
+                        href="/services/demenagement-particulier"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                       >
                         Déménagement pour particuliers
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#services"
-                        onClick={(e) => scrollToSection(e, 'services')}
+                      <Link
+                        href="/services/demenagement-professionnel"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                       >
                         Déménagement pour professionnels
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#services"
-                        onClick={(e) => scrollToSection(e, 'services')}
+                      <Link
+                        href="/services/debarras"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                       >
                         Débarras de grenier
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 )}
               </li>
               <li>
-                <a
-                  href="#galerie"
-                  onClick={(e) => scrollToSection(e, 'galerie')}
+                <Link
+                  href="/#galerie"
+                  onClick={(e) => handleNavigation(e, 'galerie')}
                   className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   Galerie Photo
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => scrollToSection(e, 'contact')}
+                <Link
+                  href="/#contact"
+                  onClick={(e) => handleNavigation(e, 'contact')}
                   className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
