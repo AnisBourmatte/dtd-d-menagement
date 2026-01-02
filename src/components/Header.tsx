@@ -11,15 +11,15 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    // If we are on the homepage, we want smooth scroll
-    if (pathname === "/") {
+    // If we are on the homepage (checking both root and with basePath for GH Pages)
+    if (pathname === "/" || pathname === "/dtd-d-menagement/") {
       e.preventDefault();
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-    // If we are NOT on homepage, let the Link behavior happen (navigate to /#targetId)
+    // If we are NOT on homepage, let the Link behavior happen
 
     setMobileMenuOpen(false);
   };
@@ -91,27 +91,130 @@ export default function Header() {
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
                 onClick={() => {
-                  if (pathname === "/") {
+                  onClick = {() => {
+                  if (pathname === "/" || pathname === "/dtd-d-menagement/") {
                     const element = document.getElementById('services');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+              if (element) element.scrollIntoView({behavior: 'smooth' });
                   } else {
-                    window.location.href = '/#services';
+                window.location.href = '/dtd-d-menagement/#services';
                   }
                 }}
               >
-                Nos Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              <div
-                className={`absolute left-0 top-full pt-2 transition-all duration-300 ${servicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
+              Nos Services
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div
+              className={`absolute left-0 top-full pt-2 transition-all duration-300 ${servicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <ul className="bg-white shadow-xl rounded-xl py-3 min-w-[250px] border border-gray-100">
+                <li>
+                  <Link
+                    href="/services/location-monte-meuble"
+                    className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                  >
+                    Location de monte-meuble
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/demenagement-particulier"
+                    className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                  >
+                    Déménagement pour particuliers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/demenagement-professionnel"
+                    className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                  >
+                    Déménagement pour professionnels
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/debarras"
+                    className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                  >
+                    Débarras de grenier
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <Link
+              href="/#galerie"
+              onClick={(e) => handleNavigation(e, 'galerie')}
+              className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              Galerie Photo
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/#contact"
+              onClick={(e) => handleNavigation(e, 'contact')}
+              className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-dtd-navy hover:text-dtd-red transition-colors p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 py-4">
+          <ul className="container mx-auto px-4 space-y-3">
+            <li>
+              <Link
+                href="/#accueil"
+                onClick={(e) => handleNavigation(e, 'accueil')}
+                className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
-                <ul className="bg-white shadow-xl rounded-xl py-3 min-w-[250px] border border-gray-100">
+                Accueil
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/#presentation"
+                onClick={(e) => handleNavigation(e, 'presentation')}
+                className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                Présentation
+              </Link>
+            </li>
+            <li>
+              <button
+                className="flex items-center gap-1 text-dtd-navy font-bold text-sm uppercase w-full py-2 hover:text-dtd-red transition-colors"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+                onClick={() => setServicesOpen(!servicesOpen)}
+              >
+                Nos Services
+                <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {servicesOpen && (
+                <ul className="ml-4 mt-2 space-y-2 border-l-2 border-dtd-red pl-4">
                   <li>
                     <Link
                       href="/services/location-monte-meuble"
-                      className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                     >
                       Location de monte-meuble
                     </Link>
@@ -119,7 +222,8 @@ export default function Header() {
                   <li>
                     <Link
                       href="/services/demenagement-particulier"
-                      className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                     >
                       Déménagement pour particuliers
                     </Link>
@@ -127,7 +231,8 @@ export default function Header() {
                   <li>
                     <Link
                       href="/services/demenagement-professionnel"
-                      className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                     >
                       Déménagement pour professionnels
                     </Link>
@@ -135,19 +240,20 @@ export default function Header() {
                   <li>
                     <Link
                       href="/services/debarras"
-                      className="block px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-dtd-red hover:text-white transition-all duration-200 cursor-pointer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
                     >
                       Débarras de grenier
                     </Link>
                   </li>
                 </ul>
-              </div>
+              )}
             </li>
             <li>
               <Link
                 href="/#galerie"
                 onClick={(e) => handleNavigation(e, 'galerie')}
-                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
+                className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Galerie Photo
@@ -157,121 +263,16 @@ export default function Header() {
               <Link
                 href="/#contact"
                 onClick={(e) => handleNavigation(e, 'contact')}
-                className="font-bold text-sm uppercase tracking-wider cursor-pointer text-dtd-navy hover:text-dtd-red transition-colors duration-300"
+                className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Contact
               </Link>
             </li>
           </ul>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-dtd-navy hover:text-dtd-red transition-colors p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 py-4">
-            <ul className="container mx-auto px-4 space-y-3">
-              <li>
-                <Link
-                  href="/#accueil"
-                  onClick={(e) => handleNavigation(e, 'accueil')}
-                  className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#presentation"
-                  onClick={(e) => handleNavigation(e, 'presentation')}
-                  className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Présentation
-                </Link>
-              </li>
-              <li>
-                <button
-                  className="flex items-center gap-1 text-dtd-navy font-bold text-sm uppercase w-full py-2 hover:text-dtd-red transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                >
-                  Nos Services
-                  <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {servicesOpen && (
-                  <ul className="ml-4 mt-2 space-y-2 border-l-2 border-dtd-red pl-4">
-                    <li>
-                      <Link
-                        href="/services/location-monte-meuble"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
-                      >
-                        Location de monte-meuble
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/services/demenagement-particulier"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
-                      >
-                        Déménagement pour particuliers
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/services/demenagement-professionnel"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
-                      >
-                        Déménagement pour professionnels
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/services/debarras"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block text-sm text-gray-600 py-1 cursor-pointer hover:text-dtd-red transition-colors"
-                      >
-                        Débarras de grenier
-                      </Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <Link
-                  href="/#galerie"
-                  onClick={(e) => handleNavigation(e, 'galerie')}
-                  className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Galerie Photo
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#contact"
-                  onClick={(e) => handleNavigation(e, 'contact')}
-                  className="block text-dtd-navy font-bold text-sm uppercase cursor-pointer py-2 hover:text-dtd-red transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
-      </nav>
-    </header>
+      )}
+    </nav>
+    </header >
   );
 }
