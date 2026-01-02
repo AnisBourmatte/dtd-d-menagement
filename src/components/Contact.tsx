@@ -79,26 +79,18 @@ export default function Contact() {
       </div>
 
       {/* Map */}
-      <div className="h-64 md:h-80 bg-gradient-to-b from-gray-100 to-gray-200 flex items-center justify-center">
-        <div className="text-center p-8">
-          <div className="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
-            <MapPin className="w-10 h-10 text-dtd-red" />
-          </div>
-          <h4 className="text-dtd-navy font-bold text-lg mb-2">Notre emplacement</h4>
-          <p className="text-gray-600 text-sm md:text-base">
-            30, rue de la Varenne<br />
-            94100 Saint-Maur-des-Fossés
-          </p>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=30+rue+de+la+Varenne+94100+Saint-Maur-des-Fosses"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-4 text-dtd-red hover:text-red-700 font-medium text-sm md:text-base transition-colors group"
-          >
-            Voir sur Google Maps
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
+      <div className="h-96 w-full bg-gray-100">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2629.356497334759!2d2.505763976867355!3d48.77583397132149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60b106093103d%3A0xc3f6af58e08f5d0!2s30%20Rue%20de%20la%20Varenne%2C%2094100%20Saint-Maur-des-Foss%C3%A9s!5e0!3m2!1sfr!2sfr!4v1709400000000!5m2!1sfr!2sfr"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+          title="Localisation DTD Déménagement"
+        ></iframe>
       </div>
 
       {/* Footer */}
@@ -120,7 +112,7 @@ export default function Contact() {
 function ChevronRight({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="m9 18 6-6-6-6"/>
+      <path d="m9 18 6-6-6-6" />
     </svg>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function ClientBody({
   children,
@@ -14,6 +15,7 @@ export default function ClientBody({
   return (
     <body className="antialiased">
       {children}
+      <CookieBanner />
     </body>
   );
 }

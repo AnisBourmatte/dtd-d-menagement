@@ -6,26 +6,26 @@ import AnimatedSection from "./AnimatedSection";
 const services = [
   {
     icon: Truck,
-    title: "Location de monte-meuble",
-    description: "Chargez et déchargez vos meubles en toute facilité.",
+    title: "Location de monte-meuble 94",
+    description: "Service de monte-charge à Saint-Maur et dans tout le 94 pour accès difficiles.",
     color: "text-dtd-red",
   },
   {
     icon: Home,
-    title: "Déménagement pour particuliers",
-    description: "Déménagement d'appartement ou maison.",
+    title: "Déménagement Particulier",
+    description: "Votre déménagement résidentiel à Saint-Maur-des-Fossés et Val-de-Marne.",
     color: "text-dtd-red",
   },
   {
     icon: Building2,
-    title: "Déménagement pour professionnels",
-    description: "Transfert de bureaux et de mobilier d'entreprise.",
+    title: "Déménagement Bureaux",
+    description: "Transfert d'entreprise et bureaux sur Saint-Maur et Île-de-France.",
     color: "text-dtd-red",
   },
   {
     icon: Package,
-    title: "Débarras de grenier",
-    description: "Comptez sur nos déménageurs pour un débarras efficace.",
+    title: "Débarras Val-de-Marne",
+    description: "Service complet de débarras de maison et grenier dans le 94.",
     color: "text-dtd-red",
   },
 ];
@@ -34,7 +34,7 @@ export default function Services() {
   return (
     <section id="services" className="py-12 md:py-16 bg-gray-50 relative overflow-hidden">
       {/* Background decorative element */}
-      <div className="absolute right-0 top-0 h-full w-1/3 bg-cover bg-center opacity-10 hidden lg:block" style={{backgroundImage: "url('https://ext.same-assets.com/3342823941/3080392397.webp')"}} />
+      <div className="absolute right-0 top-0 h-full w-1/3 bg-cover bg-center opacity-10 hidden lg:block" style={{ backgroundImage: "url('https://ext.same-assets.com/3342823941/3080392397.webp')" }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">

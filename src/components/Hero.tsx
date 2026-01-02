@@ -26,7 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-white text-base md:text-lg mb-3 md:mb-4 font-light"
           >
-            Déménagement à Saint-Maur-des-Fossés
+            Location de Monte-Meuble & Déménagement 94
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -34,8 +34,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 md:mb-8"
           >
-            DTD Déménagement<br />
-            <span className="text-dtd-red">Toute Distance</span>
+            DTD Déménageur<br />
+            <span className="text-dtd-red">Saint-Maur-des-Fossés (94)</span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

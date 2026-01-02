@@ -23,21 +23,21 @@ export default function About() {
           <AnimatedSection direction="right" delay={0.2}>
             <div>
               <p className="text-dtd-red font-semibold uppercase tracking-wider mb-2 text-xs md:text-sm">
-                Présentation
+                Entreprise locale (94)
               </p>
               <h2 className="text-dtd-navy text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 uppercase">
-                DTD Déménagement<br />Toute Distance
+                Expert Déménagement<br />& Monte-Meuble 94
               </h2>
 
               <div className="space-y-3 md:space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
                 <p>
-                  Déménagez en toute simplicité, grâce à notre <strong className="text-dtd-navy">société de déménagement à Saint-Maur-des-Fossés (94)</strong>. Nous intervenons en Île-de-France et dans le Val-de-Marne.
+                  Basée à <strong className="text-dtd-navy">Saint-Maur-des-Fossés</strong>, DTD est votre partenaire de confiance pour tout projet de <strong className="text-dtd-navy">déménagement dans le Val-de-Marne (94)</strong> et en Île-de-France.
                 </p>
                 <p>
-                  DTD et son équipe de déménageurs qualifiés vous accompagnent dans votre <strong className="text-dtd-navy">déménagement toute distance</strong>, particuliers comme entreprises. Comptez sur notre expertise pour transporter vos meubles et affaires personnelles, avec la possibilité de louer un <strong className="text-dtd-navy">monte-charge</strong> pour acheminer votre mobilier de façon simple et rapide.
+                  Spécialistes du <strong className="text-dtd-navy">monte-meuble</strong>, nous facilitons vos accès difficiles. Que vous soyez à Créteil, Champigny-sur-Marne ou Maisons-Alfort, nous intervenons rapidement pour la <strong className="text-dtd-navy">location de monte-charge</strong> et le transport de vos biens.
                 </p>
                 <p>
-                  Besoin d'un devis ? Contactez-nous, le nôtre est gratuit !
+                  Particuliers ou professionnels, demandez votre devis pour un déménagement sans stress dans le 94.
                 </p>
               </div>
 
