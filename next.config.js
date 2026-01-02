@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
+  output: 'export',
+  // Change 'dtd-d-menagement' to your repository name if different
+  basePath: isProd ? '/dtd-d-menagement' : '',
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
     unoptimized: true,
