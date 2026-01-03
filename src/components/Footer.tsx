@@ -65,9 +65,9 @@ export default function Footer() {
                 <div className="border-t border-white/10 pt-6 text-center text-xs text-gray-400">
                     <p>&copy; {new Date().getFullYear()} DTD Déménagement Toute Distance. Tous droits réservés.</p>
                     <div className="mt-2 space-x-4 text-sm">
-                        <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions Légales</a>
+                        <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions Légales</Link>
                         <span>-</span>
-                        <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
+                        <Link href="/#contact" className="hover:text-white transition-colors">Contact</Link>
                     </div>
                 </div>
             </div>
