@@ -99,7 +99,7 @@ export default function Contact() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-gray-400 text-xs md:text-sm">
             <span>DTD DÉMÉNAGEMENT TOUTE DISTANCE</span>
             <span className="hidden md:inline">|</span>
-            <a href="/mentions-legales" className="text-white hover:text-dtd-red transition-colors hover:underline">
+            <a href="/dtd-d-menagement/mentions-legales" className="text-white hover:text-dtd-red transition-colors hover:underline">
               Mentions légales
             </a>
           </div>

@@ -66,7 +66,7 @@ export default function Footer() {
                     <p>&copy; {new Date().getFullYear()} DTD Déménagement Toute Distance. Tous droits réservés.</p>
                     <div className="mt-2 space-x-4 text-sm">
                         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-                        <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions Légales</a>
+                        <a href="/dtd-d-menagement/mentions-legales" className="hover:text-white transition-colors">Mentions Légales</a>
                         <span>-</span>
                         <Link href="/#contact" className="hover:text-white transition-colors">Contact</Link>
                     </div>
